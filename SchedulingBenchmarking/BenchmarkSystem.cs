@@ -113,6 +113,7 @@ namespace SchedulingBenchmarking
         public void changeState(Job job, State state)
         {
             job.State = state;
+            fireEvent(new StateChangedEventArgs() { State = state, Job = job });
             updateStatus(job);
         }
 
