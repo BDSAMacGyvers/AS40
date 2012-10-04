@@ -15,7 +15,20 @@ namespace SchedulingBenchmarking
         /// <param name="e"></param>
         public static void OnStateChanged(object sender, StateChangedEventArgs e)
         {
-            Console.WriteLine("Job state {0}", e.State);
+            using (var dbContext = new Model1Container())
+            {
+                DbLog logEntry = new DbLog();
+                logEntry.timeStamp = DateTime.Today;
+
+                logEntry.jobState = e.State.ToString();
+                dbContext.DbLogs.Add(logEntry);
+                
+                dbContext.SaveChanges();
+
+                Console.WriteLine("Job state {0}", e.State);
+            } 
         }
+
+
     }
 }

@@ -6,3 +6,6 @@ C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarkin
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.csprojResolveAssemblyReference.cache
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.exe
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.pdb
+\\psf\Home\Desktop\assignment 40\SchedulingBenchmarking\bin\Debug\SchedulingBenchmarking.exe.config
+\\psf\Home\Desktop\assignment 40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.exe
+\\psf\Home\Desktop\assignment 40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.pdb

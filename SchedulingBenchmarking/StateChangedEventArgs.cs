@@ -12,5 +12,11 @@ namespace SchedulingBenchmarking
             get;
             set;
         }
+
+        public Job Job
+        {
+            get;
+            set;
+        }
     }	
 }
