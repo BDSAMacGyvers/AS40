@@ -2,8 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
+<<<<<<< HEAD
 -- Date Created: 10/06/2012 21:02:45
 -- Generated from EDMX file: C:\Users\Stevns\projects\bdsa\AS40\SchedulingBenchmarking\Model1.edmx
+=======
+-- Date Created: 10/06/2012 16:39:04
+-- Generated from EDMX file: C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\Model1.edmx
+>>>>>>> baaf37c4dffb00b7821f794673e41141ea63c785
 -- --------------------------------------------------
 -- CREATE database BenchmarkDB;
 SET QUOTED_IDENTIFIER OFF;
