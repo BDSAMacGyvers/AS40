@@ -19,7 +19,7 @@ namespace SchedulingBenchmarking
         #endif
 
         
-        public long TimeAdded;
+        public int TimeAdded;
 
         private int cpusneeded;
         public int ExpectedRuntime;

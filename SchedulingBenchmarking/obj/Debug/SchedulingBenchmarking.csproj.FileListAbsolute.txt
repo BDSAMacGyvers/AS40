@@ -9,3 +9,14 @@ C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarkin
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\bin\Debug\Model1.Context.cs
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\bin\Debug\Model1.Designer.cs
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\bin\Debug\Model1.Context.tt
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\SchedulingBenchmarking.exe.config
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.exe
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.pdb
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\Model1.Context.cs
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\Model1.Designer.cs
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\Model1.Context.tt
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\SchedulingBenchmarking.exe
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\SchedulingBenchmarking.pdb
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\EntityFramework.dll
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\bin\Debug\EntityFramework.xml
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.csprojResolveAssemblyReference.cache

@@ -15,6 +15,7 @@ namespace SchedulingBenchmarking
         Queue<Job> LongQueue;
 
         HashSet<Job> removedJobs;
+        private int JobCounter = 0;
 
         //singleton field
         private static Scheduler instance = new Scheduler();
@@ -28,11 +29,11 @@ namespace SchedulingBenchmarking
         }
 
         public void addJob(Job job)
-        {   
+        {
 
-            // FIX to be able to compare timestamps.
-            System.Threading.Thread.Sleep(1);
-            job.TimeAdded = DateTime.Now.Ticks;
+
+            job.TimeAdded = JobCounter++;
+            if (JobCounter > int.MaxValue - 2) JobCounter = 0;
             int time = job.ExpectedRuntime;
 
             if (time < 30)
