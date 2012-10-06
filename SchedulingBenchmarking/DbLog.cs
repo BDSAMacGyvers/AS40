@@ -18,5 +18,6 @@ namespace SchedulingBenchmarking
         public System.DateTime timeStamp { get; set; }
         public string jobState { get; set; }
         public int Id { get; set; }
+        public string user { get; set; }
     }
 }

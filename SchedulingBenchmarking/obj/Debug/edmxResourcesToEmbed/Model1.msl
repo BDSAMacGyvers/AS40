@@ -8,6 +8,7 @@
           <ScalarProperty Name="jobId" ColumnName="jobId" />
           <ScalarProperty Name="timeStamp" ColumnName="timeStamp" />
           <ScalarProperty Name="jobState" ColumnName="jobState" />
+          <ScalarProperty Name="user" ColumnName="user" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

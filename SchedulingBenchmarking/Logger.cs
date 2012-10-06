@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -17,18 +19,23 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
+                //dbContext.Database.Connection.Open();
                 DbLog logEntry = new DbLog();
-                logEntry.timeStamp = DateTime.Today;
+
+                logEntry.timeStamp = DateTime.Now;
 
                 logEntry.jobState = e.State.ToString();
+
+                logEntry.user = e.Job.Owner.Name;
+
+                logEntry.jobId = e.Job.TimeAdded;
+
                 dbContext.DbLogs.Add(logEntry);
-                
+
                 dbContext.SaveChanges();
 
                 Console.WriteLine("Job state {0}", e.State);
             } 
         }
-
-
     }
 }

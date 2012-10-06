@@ -11,5 +11,6 @@
     <Property Name="timeStamp" Type="datetime" Nullable="false" />
     <Property Name="jobState" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema>

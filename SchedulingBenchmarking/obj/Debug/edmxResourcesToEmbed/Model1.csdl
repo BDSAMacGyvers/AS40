@@ -11,5 +11,6 @@
     <Property Type="DateTime" Name="timeStamp" Nullable="false" />
     <Property Type="String" Name="jobState" Nullable="false" />
     <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="user" Nullable="false" />
   </EntityType>
 </Schema>

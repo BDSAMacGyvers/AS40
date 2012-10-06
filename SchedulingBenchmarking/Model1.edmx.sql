@@ -2,10 +2,10 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/04/2012 16:12:17
--- Generated from EDMX file: C:\Users\Morten\Documents\Visual Studio 2012\Projects\AS40\SchedulingBenchmarking\Model1.edmx
+-- Date Created: 10/06/2012 21:02:45
+-- Generated from EDMX file: C:\Users\Stevns\projects\bdsa\AS40\SchedulingBenchmarking\Model1.edmx
 -- --------------------------------------------------
-
+-- CREATE database BenchmarkDB;
 SET QUOTED_IDENTIFIER OFF;
 GO
 USE [BenchmarkDB];
@@ -35,7 +35,8 @@ CREATE TABLE [dbo].[DbLogs] (
     [jobId] int  NOT NULL,
     [timeStamp] datetime  NOT NULL,
     [jobState] nvarchar(max)  NOT NULL,
-    [Id] int IDENTITY(1,1) NOT NULL
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [user] nvarchar(max)  NOT NULL
 );
 GO
 

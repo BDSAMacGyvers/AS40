@@ -63,7 +63,7 @@ namespace SchedulingBenchmarking
             system.ExecuteAll();
             
             Job job = new Job((string[] arg) => { return arg.Length.ToString(); }, new Owner("tester"), 3, 35);
-            Console.WriteLine(job);
+            //Console.WriteLine(job);
         }
 
         public BenchmarkSystem()
