@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BenchDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BenchDatabaseModelStoreContainer">
+          <EntitySet Name="DbLogs" EntityType="BenchDatabaseModel.Store.DbLogs" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="DbLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="jobId" Type="int" Nullable="false" />
+          <Property Name="timeStamp" Type="datetime" Nullable="false" />
+          <Property Name="jobState" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BenchDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BenchDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DbLogs" EntityType="BenchDatabaseModel.DbLog" />
+        </EntityContainer>
+        <EntityType Name="DbLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="jobId" Type="Int32" Nullable="false" />
+          <Property Name="timeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="jobState" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BenchDatabaseModelStoreContainer" CdmEntityContainer="BenchDatabaseEntities">
+          <EntitySetMapping Name="DbLogs">
+            <EntityTypeMapping TypeName="BenchDatabaseModel.DbLog">
+              <MappingFragment StoreEntitySet="DbLogs">
+                <ScalarProperty Name="jobId" ColumnName="jobId" />
+                <ScalarProperty Name="timeStamp" ColumnName="timeStamp" />
+                <ScalarProperty Name="jobState" ColumnName="jobState" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
