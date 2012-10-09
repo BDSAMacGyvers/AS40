@@ -33,14 +33,32 @@ namespace SchedulingBenchmarking
                 
                 foreach (Job job in jobs)
                 {
-                    Console.WriteLine(job);
+                    Console.WriteLine(name+": " +job.jobId);
                 }
 
             }
         }
+
         
         //select all jobs from a user within the past X days
-        //select all jobs submitted by a user within a given time period (this includes the both the time and the date)
+        
+        //select all jobs submitted by a user within a given time period (this includes both the time and the date)
+        public void FindAllSubmitsWithin(string user, DateTime start, DateTime end)
+        {
+            using (var dbContext = new Model1Container())
+            {
+                IEnumerable<int> submits = from db in dbContext.DbLogs where 
+                                  db.user == user && start < db.timeStamp && db.timeStamp < end 
+                                  && db.jobState == "Submitted" select db.jobId;
+
+                Console.WriteLine(user + " has within " + start + " and " + end + ":");
+                foreach (int sub in submits)
+                {
+                    Console.WriteLine(sub);
+                }
+            }
+            
+        }
         //return the number of jobs within a given period grouped by their status (queued,running,ended, error). Here the activity log can be useful.
         //perform the same query as above but restricting the query to only one user
     }

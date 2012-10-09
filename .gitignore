@@ -30,7 +30,7 @@ obj/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
-
+*.exe
 #MonoDevelop
 *.pidb
 *.userprefs
