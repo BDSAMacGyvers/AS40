@@ -17,25 +17,12 @@ namespace SchedulingBenchmarking
         /// <param name="e"></param>
         public static void OnStateChanged(object sender, StateChangedEventArgs e)
         {
-            using (var dbContext = new Model1Container())
-            {
-                dbContext.Database.Connection.Open();
-                DbLog logEntry = new DbLog();
-                
-                    logEntry.timeStamp = DateTime.Now;
+            DateTime ts = DateTime.Now;
+            string js = e.State.ToString();
+            string u = e.Job.Owner.Name;
+            int ji = e.Job.jobId;
 
-                logEntry.jobState = e.State.ToString();
-
-                logEntry.user = e.Job.Owner.Name;
-
-                logEntry.jobId = e.Job.jobId;
-
-                dbContext.DbLogs.Add(logEntry);
-
-                dbContext.SaveChanges();
-
-                Console.WriteLine("Job state {0}", e.State);
-            } 
+            DAO.AddEntry(ts, js, u, ji);
         }
     }
 }

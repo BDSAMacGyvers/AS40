@@ -9,6 +9,24 @@ namespace SchedulingBenchmarking
 {
     partial class DAO
     {
+        // add entry 
+        public static void AddEntry(DateTime timeStamp, string jobState, string user, int jobId)
+        {
+            using (var dbContext = new Model1Container())
+            {
+                dbContext.Database.Connection.Open();
+                DbLog logEntry = new DbLog();
+
+                logEntry.timeStamp = timeStamp;
+                logEntry.jobState = jobState;
+                logEntry.user = user;
+                logEntry.jobId = jobId;
+
+                dbContext.DbLogs.Add(logEntry);
+                dbContext.SaveChanges();
+            } 
+        }
+
         //select all users
         public void FindUsers()
         {
