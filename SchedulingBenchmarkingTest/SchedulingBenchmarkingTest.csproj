@@ -49,6 +49,7 @@
     <Compile Include="SchedulerTest.cs" />
     <Compile Include="BenchmarkSystemTest.cs" />
     <Compile Include="JobTest.cs" />
+    <Compile Include="DAOtest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SchedulingBenchmarking\SchedulingBenchmarking.csproj">
