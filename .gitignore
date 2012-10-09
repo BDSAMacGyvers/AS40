@@ -19,11 +19,13 @@
 *.[Cc]ache
 *.ilk
 *.log
+*.edmx
 *.lib
 *.sbr
 *.sdf
 *.opensdf
 *.unsuccessfulbuild
+\bin
 ipch/
 obj/
 [Bb]in
