@@ -28,7 +28,7 @@ namespace SchedulingBenchmarking
 
                 logEntry.user = e.Job.Owner.Name;
 
-                logEntry.jobId = e.Job.TimeAdded;
+                logEntry.jobId = e.Job.jobId;
 
                 dbContext.DbLogs.Add(logEntry);
 

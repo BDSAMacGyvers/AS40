@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SchedulingBenchmarking
 {
-    class DAO
+    partial class DAO
     {
         //select all users
         public void FindUsers()
@@ -26,7 +26,17 @@ namespace SchedulingBenchmarking
         //select all jobs from a user
         public void FindAllJobs(String name)
         {
-            IEnumerable<string> jobs = from db in dbContext.DbLogs where db.user = name select db.job, db.user group by db.user;  
+            using (var dbContext = new Model1Container())
+            {
+                IEnumerable<Job> jobs = from db in dbContext.DbLogs where db.user == name 
+                                        select new Job() { jobId = db.jobId };
+                
+                foreach (Job job in jobs)
+                {
+                    Console.WriteLine(job);
+                }
+
+            }
         }
         
         //select all jobs from a user within the past X days

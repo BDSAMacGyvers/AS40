@@ -19,7 +19,7 @@ namespace SchedulingBenchmarking
         #endif
 
         
-        public int TimeAdded;
+        public int jobId;
 
         private int cpusneeded;
         public int ExpectedRuntime;
@@ -57,6 +57,10 @@ namespace SchedulingBenchmarking
             this.ExpectedRuntime = expectedRuntime;
         }
 
+        public Job()
+        {
+        }
+
         /// <summary>
         /// This method calls the supplied delegate method. 
         /// </summary>
@@ -71,7 +75,7 @@ namespace SchedulingBenchmarking
         // representation to be used with status array
         public override string ToString() 
         { 
-            return "Job added: " +TimeAdded+" owner: "+ Owner.Name;
+            return "Job added: " +jobId+" owner: "+ Owner.Name;
         }
     
     }    

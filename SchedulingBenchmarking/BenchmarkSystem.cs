@@ -99,7 +99,7 @@ namespace SchedulingBenchmarking
 
                 // start job
                 changeState(job, State.Running);
-                String result = job.Process(new string[] { "Processing job started at: " + job.TimeAdded + " owner: " + job.Owner.Name  });
+                String result = job.Process(new string[] { "Processing job started at: " + job.jobId + " owner: " + job.Owner.Name  });
 
                 // if failed
                 if (result == null)

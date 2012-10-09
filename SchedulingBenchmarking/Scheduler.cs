@@ -32,7 +32,7 @@ namespace SchedulingBenchmarking
         {
 
 
-            job.TimeAdded = JobCounter++;
+            job.jobId = JobCounter++;
             if (JobCounter > int.MaxValue - 2) JobCounter = 0;
             int time = job.ExpectedRuntime;
 
@@ -65,7 +65,7 @@ namespace SchedulingBenchmarking
                 timedJob.Add(LongQueue.ElementAt(0));
 
             /// Return the most recent of the previously found three values
-            return timedJob.OrderBy(job => job.TimeAdded).ElementAt(0);
+            return timedJob.OrderBy(job => job.jobId).ElementAt(0);
         }
 
         /// <summary>
