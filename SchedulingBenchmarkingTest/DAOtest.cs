@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace SchedulingBenchmarking
 {
     [TestClass]
@@ -57,7 +58,15 @@ namespace SchedulingBenchmarking
         [TestMethod]
         public void TestFindAllJobs()
         {
-
+            
+                int preCount = DAO.FindAllJobs("christoffer").Count();
+                DAO.AddEntry(new DateTime(2012, 2, 16, 8, 38, 29), "Submitted", "christoffer", 3);
+                DAO.AddEntry(new DateTime(2012, 2, 16, 8, 45, 9), "Running", "christoffer", 3);
+                DAO.AddEntry(new DateTime(2012, 2, 16, 8, 50, 14), "Terminated", "christoffer", 3);
+                int postCount = DAO.FindAllJobs("christoffer").Count();
+                Assert.AreEqual(preCount + 3, postCount);
+                Assert.IsFalse(preCount == postCount);
+            
         }
 
         [TestMethod]
@@ -78,7 +87,28 @@ namespace SchedulingBenchmarking
         [TestMethod]
         public void TestNrOfJobsWithin()
         {
-
+            //return the number of jobs within a given period grouped by their status (queued,running,ended, error). Here the activity log can be useful.
+            var result = DAO.NrOfJobsWithin(DateTime.Today.AddDays(-2), DateTime.Today);
+            //As there is only five different states
+            Assert.IsFalse(result.Count() > 5);
+            int submittedCount = 0;
+            int cancelledCount = 0;
+            foreach (Entry ent in result) 
+            {
+                if (ent.State.Equals("Submitted")) submittedCount = ent.Count;
+                if (ent.State.Equals("Cancelled")) cancelledCount = ent.Count;
+            }
+            DAO.AddEntry(DateTime.Today, "Submitted", "morten", 1);
+            var result2 = DAO.NrOfJobsWithin(DateTime.Today.AddDays(-2), DateTime.Today);
+            //As there is only five different states
+            Assert.IsFalse(result2.Count() > 5);
+            foreach (Entry ent in result2)
+            {
+                // assert that submitted count has increased by one
+                if (ent.State.Equals("Submitted")) Assert.IsTrue(ent.Count - submittedCount == 1);
+                // assert that cancelledCount hasn't changed
+                if (ent.State.Equals("Cancelled")) Assert.IsFalse(ent.Count - cancelledCount == 1);
+            }
         }
 
         [TestMethod]

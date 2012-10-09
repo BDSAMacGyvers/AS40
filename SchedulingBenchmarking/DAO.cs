@@ -5,8 +5,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
+
 namespace SchedulingBenchmarking
-{
+{   
+    /// <summary>
+    /// Struct used by the last two linq querys to hold the information from two columns
+    /// </summary>
+    public struct Entry 
+    {
+        public String State { get; set; }
+        public int Count { get; set; }
+    }
+
     public partial class DAO
     {
         // add entry 
@@ -45,23 +55,33 @@ namespace SchedulingBenchmarking
         }
 
         //select all jobs from a user
-        public static void FindAllJobs(String name)
+        public static IEnumerable<Job> FindAllJobs(String name)
         {
             using (var dbContext = new Model1Container())
             {
-                IEnumerable<Job> jobs = from db in dbContext.DbLogs where db.user == name 
-                                        select new Job() { jobId = db.jobId };
+                return from db in dbContext.DbLogs where db.user == name 
+                       select new Job() { jobId = db.jobId };
                 
-                foreach (Job job in jobs)
-                {
-                    Console.WriteLine(name+": " +job.jobId);
-                }
+               
 
             }
         }
 
         
         //select all jobs from a user within the past X days
+        public static List<int> GetLastXDays(int x, string name)
+        {
+            using (var dbContext = new Model1Container())
+            {
+                DateTime span = DateTime.Today.AddDays(-x);
+                var lastTenDays = from db in dbContext.DbLogs
+                                  where (db.timeStamp > span) && db.user == name
+                                  select db.jobId;
+
+                return lastTenDays.ToList();
+            }
+
+        }
         
         //select all jobs submitted by a user within a given time period (this includes both the time and the date)
         public static void FindAllSubmitsWithin(string user, DateTime start, DateTime end)
@@ -81,20 +101,15 @@ namespace SchedulingBenchmarking
             
         }
         //return the number of jobs within a given period grouped by their status (queued,running,ended, error). Here the activity log can be useful.
-        public static void NrOfJobsWithin(DateTime start, DateTime end)
+        public static IEnumerable<Entry> NrOfJobsWithin(DateTime start, DateTime end)
         {
+            
             using (var dbContext = new Model1Container())
             {
-                var jobsByState = from db in dbContext.DbLogs
-                                  where start < db.timeStamp && db.timeStamp < end
-                                  group db by db.jobState into JobByState
-                                  select new { count = JobByState.Count(), state = JobByState.Key };
-  
-                Console.WriteLine("Between "+start+" and "+end+" the following nr of jobs have been processd");
-                foreach (var state in jobsByState)
-                {
-                    Console.WriteLine("Nr of jobs in state: "+state.state+" : "+state.count);                    
-                }
+                return from db in dbContext.DbLogs
+                       where start < db.timeStamp && db.timeStamp < end
+                       group db by db.jobState into JobByState
+                       select new Entry{ Count = JobByState.Count(), State = JobByState.Key };
             }
 
         }
