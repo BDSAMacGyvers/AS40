@@ -19,7 +19,7 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
-                //dbContext.Database.Connection.Open();
+                dbContext.Database.Connection.Open();
                 DbLog logEntry = new DbLog();
 
                 logEntry.timeStamp = DateTime.Now;

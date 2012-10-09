@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BenchmarkSystem.cs" />
+    <Compile Include="DAO.cs" />
     <Compile Include="DbLog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
