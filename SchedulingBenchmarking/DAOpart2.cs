@@ -5,19 +5,19 @@ using System.Text;
 
 namespace SchedulingBenchmarking
 {
-    partial class DAO
+    public partial class DAO
     {
-
-
-        public void getLastXDays(int x)
+         //select all jobs from a user within the past X days
+        public static List<int> GetLastXDays(int x, string name)
         {
-
             using (var dbContext = new Model1Container())
             {
                 DateTime span = DateTime.Today.AddDays(-x);
                 var lastTenDays = from db in dbContext.DbLogs
-                                  where (db.timeStamp > span)
-                                  select db.user;
+                                  where (db.timeStamp > span) && db.user == name
+                                  select db.jobId;
+
+                return lastTenDays.ToList();
             }
 
         }

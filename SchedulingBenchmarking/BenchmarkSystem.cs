@@ -64,15 +64,9 @@ namespace SchedulingBenchmarking
             
             Job job = new Job((string[] arg) => { return arg.Length.ToString(); }, new Owner("tester"), 3, 35);
             //Console.WriteLine(job);
+            
 
 
-            DAO dao = new DAO();
-            //dao.FindUsers();
-            //dao.FindAllJobs("owner3");
-            //dao.FindAllSubmitsWithin("owner3", new DateTime(2012, 1, 10), DateTime.Now);
-            //dao.NrOfJobsWithin(new DateTime(2012, 1, 10), DateTime.Now);
-            dao.NrOfJobsWithin(new DateTime(2012, 1, 10), DateTime.Now, "owner3");
-            Console.ReadKey();
         }
 
         public BenchmarkSystem()

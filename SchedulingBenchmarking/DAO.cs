@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SchedulingBenchmarking
 {
-    partial class DAO
+    public partial class DAO
     {
         // add entry 
         public static void AddEntry(DateTime timeStamp, string jobState, string user, int jobId)
@@ -28,21 +28,24 @@ namespace SchedulingBenchmarking
         }
 
         //select all users
-        public void FindUsers()
+        public static List<string> FindUsers()
         {
             using (var dbContext = new Model1Container())
             {
-                IEnumerable<string> users = from db in dbContext.DbLogs select db.user;
+                IEnumerable<string> users = (from db in dbContext.DbLogs select db.user).Distinct();
 
+                /*
                 foreach(string name in users)
                 {
                     Console.WriteLine(name); 
-                }
+                }*/
+
+                return users.ToList();
             }
         }
 
         //select all jobs from a user
-        public void FindAllJobs(String name)
+        public static void FindAllJobs(String name)
         {
             using (var dbContext = new Model1Container())
             {
@@ -61,7 +64,7 @@ namespace SchedulingBenchmarking
         //select all jobs from a user within the past X days
         
         //select all jobs submitted by a user within a given time period (this includes both the time and the date)
-        public void FindAllSubmitsWithin(string user, DateTime start, DateTime end)
+        public static void FindAllSubmitsWithin(string user, DateTime start, DateTime end)
         {
             using (var dbContext = new Model1Container())
             {
@@ -78,7 +81,7 @@ namespace SchedulingBenchmarking
             
         }
         //return the number of jobs within a given period grouped by their status (queued,running,ended, error). Here the activity log can be useful.
-        public void NrOfJobsWithin(DateTime start, DateTime end)
+        public static void NrOfJobsWithin(DateTime start, DateTime end)
         {
             using (var dbContext = new Model1Container())
             {
@@ -97,7 +100,7 @@ namespace SchedulingBenchmarking
         }
         
         //perform the same query as above but restricting the query to only one user
-        public void NrOfJobsWithin(DateTime start, DateTime end, string user)
+        public static void NrOfJobsWithinOne(DateTime start, DateTime end, string user)
         {
             using (var dbContext = new Model1Container())
             {
@@ -112,7 +115,7 @@ namespace SchedulingBenchmarking
                     Console.WriteLine("Nr of jobs in state: " + state.state + " : " + state.count);
                 }
             }
-
         }
+
     }
 }
