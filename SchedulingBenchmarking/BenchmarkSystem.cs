@@ -67,7 +67,9 @@ namespace SchedulingBenchmarking
 
 
             DAO dao = new DAO();
-            dao.FindUsers();
+            //dao.FindUsers();
+            //dao.FindAllJobs("owner3");
+            dao.FindAllSubmitsWithin("owner3", new DateTime(2012, 1, 10), DateTime.Now);
             Console.ReadKey();
         }
 
