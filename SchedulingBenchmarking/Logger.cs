@@ -21,8 +21,8 @@ namespace SchedulingBenchmarking
             {
                 dbContext.Database.Connection.Open();
                 DbLog logEntry = new DbLog();
-
-                logEntry.timeStamp = DateTime.Now;
+                if(logEntry.timeStamp == null)
+                    logEntry.timeStamp = DateTime.Now;
 
                 logEntry.jobState = e.State.ToString();
 

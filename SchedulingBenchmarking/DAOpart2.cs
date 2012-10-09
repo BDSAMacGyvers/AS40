@@ -9,7 +9,7 @@ namespace SchedulingBenchmarking
     {
 
 
-        public void getLastX(int x)
+        public void getLastXDays(int x)
         {
 
             using (var dbContext = new Model1Container())
