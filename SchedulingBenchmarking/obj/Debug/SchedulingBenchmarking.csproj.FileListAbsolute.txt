@@ -41,7 +41,6 @@ C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBe
 C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarking\bin\Debug\SchedulingBenchmarking.pdb
 C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarking\bin\Debug\EntityFramework.dll
 C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarking\bin\Debug\EntityFramework.xml
-C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.csprojResolveAssemblyReference.cache
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarking\bin\Debug\SchedulingBenchmarking.exe.config
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.exe
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.pdb
@@ -53,3 +52,4 @@ C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBe
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarking\bin\Debug\EntityFramework.dll
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarking\bin\Debug\EntityFramework.xml
 C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.csprojResolveAssemblyReference.cache
+C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarking\obj\Debug\SchedulingBenchmarking.csprojResolveAssemblyReference.cache

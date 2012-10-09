@@ -9,6 +9,24 @@ namespace SchedulingBenchmarking
 {
     partial class DAO
     {
+        // add entry 
+        public static void AddEntry(DateTime timeStamp, string jobState, string user, int jobId)
+        {
+            using (var dbContext = new Model1Container())
+            {
+                dbContext.Database.Connection.Open();
+                DbLog logEntry = new DbLog();
+
+                logEntry.timeStamp = timeStamp;
+                logEntry.jobState = jobState;
+                logEntry.user = user;
+                logEntry.jobId = jobId;
+
+                dbContext.DbLogs.Add(logEntry);
+                dbContext.SaveChanges();
+            } 
+        }
+
         //select all users
         public void FindUsers()
         {
@@ -60,6 +78,41 @@ namespace SchedulingBenchmarking
             
         }
         //return the number of jobs within a given period grouped by their status (queued,running,ended, error). Here the activity log can be useful.
+        public void NrOfJobsWithin(DateTime start, DateTime end)
+        {
+            using (var dbContext = new Model1Container())
+            {
+                var jobsByState = from db in dbContext.DbLogs
+                                  where start < db.timeStamp && db.timeStamp < end
+                                  group db by db.jobState into JobByState
+                                  select new { count = JobByState.Count(), state = JobByState.Key };
+  
+                Console.WriteLine("Between "+start+" and "+end+" the following nr of jobs have been processd");
+                foreach (var state in jobsByState)
+                {
+                    Console.WriteLine("Nr of jobs in state: "+state.state+" : "+state.count);                    
+                }
+            }
+
+        }
+        
         //perform the same query as above but restricting the query to only one user
+        public void NrOfJobsWithin(DateTime start, DateTime end, string user)
+        {
+            using (var dbContext = new Model1Container())
+            {
+                var jobsByState = from db in dbContext.DbLogs
+                                  where start < db.timeStamp && db.timeStamp < end && user == db.user
+                                  group db by db.jobState into JobByState
+                                  select new { count = JobByState.Count(), state = JobByState.Key };
+
+                Console.WriteLine("Between " + start + " and " + end + " the following nr of jobs have been processed for "+user);
+                foreach (var state in jobsByState)
+                {
+                    Console.WriteLine("Nr of jobs in state: " + state.state + " : " + state.count);
+                }
+            }
+
+        }
     }
 }
