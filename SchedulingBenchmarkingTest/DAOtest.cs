@@ -21,7 +21,7 @@ namespace SchedulingBenchmarking
             context.SubmitChanges();
             }
              */
-
+            
             // Insert test contents
 
             // DateTime er i format year, month, day, hour, minute, second
@@ -58,27 +58,38 @@ namespace SchedulingBenchmarking
         [TestMethod]
         public void TestFindAllJobs()
         {
-
-            int preCount = DAO.FindAllJobs("christoffer").Count();
-            DAO.AddEntry(new DateTime(2012, 2, 16, 8, 38, 29), "Submitted", "christoffer", 3);
-            DAO.AddEntry(new DateTime(2012, 2, 16, 8, 45, 9), "Running", "christoffer", 3);
-            DAO.AddEntry(new DateTime(2012, 2, 16, 8, 50, 14), "Terminated", "christoffer", 3);
-            int postCount = DAO.FindAllJobs("christoffer").Count();
-            Assert.AreEqual(preCount + 3, postCount);
-            Assert.IsFalse(preCount == postCount);
-
+            
+                int preCount = DAO.FindAllJobs("christoffer").Count();
+                DAO.AddEntry(new DateTime(2012, 2, 16, 8, 38, 29), "Submitted", "christoffer", 3);
+                DAO.AddEntry(new DateTime(2012, 2, 16, 8, 45, 9), "Running", "christoffer", 3);
+                DAO.AddEntry(new DateTime(2012, 2, 16, 8, 50, 14), "Terminated", "christoffer", 3);
+                int postCount = DAO.FindAllJobs("christoffer").Count();
+                Assert.AreEqual(preCount + 3, postCount);
+                Assert.IsFalse(preCount == postCount);
+            
         }
 
         [TestMethod]
         public void TestFindAllSubmitsWithin()
         {
+            DateTime start = new DateTime(2010, 2, 16, 8, 38, 29);
+            DateTime end = new DateTime(2013, 2, 16, 8, 45, 9);
+            int preCount = DAO.FindAllSubmitsWithin("christoffer", start, end).Count();
+            
+            DAO.AddEntry(new DateTime(2011, 2, 16, 8, 38, 29), "Submitted", "christoffer", 3);
+            DAO.AddEntry(new DateTime(2012, 2, 16, 8, 45, 9), "Running", "christoffer", 3);
+            DAO.AddEntry(new DateTime(2009, 2, 16, 8, 50, 14), "Terminated", "christoffer", 3);
+            
+            int postCount = DAO.FindAllSubmitsWithin("christoffer", start, end).Count();
+            Assert.AreEqual(preCount + 2, postCount);
+            Assert.IsFalse(preCount == postCount);
 
         }
 
         [TestMethod]
         public void TestGetLastXDays()
         {
-            List<int> jobsForUser = DAO.GetLastXDays(120, "morten");
+            List<int> jobsForUser= DAO.GetLastXDays(120, "morten");
 
             Assert.IsTrue(jobsForUser.Contains(1));
             Assert.IsFalse(jobsForUser.Contains(3));
@@ -93,7 +104,7 @@ namespace SchedulingBenchmarking
             Assert.IsFalse(result.Count() > 5);
             int submittedCount = 0;
             int cancelledCount = 0;
-            foreach (Entry ent in result)
+            foreach (Entry ent in result) 
             {
                 if (ent.State.Equals("Submitted")) submittedCount = ent.Count;
                 if (ent.State.Equals("Cancelled")) cancelledCount = ent.Count;
@@ -114,7 +125,28 @@ namespace SchedulingBenchmarking
         [TestMethod]
         public void NrOfJobsWithinOne()
         {
-
+            //return the number of jobs within a given period grouped by their status (queued,running,ended, error). Here the activity log can be useful.
+            var result = DAO.NrOfJobsWithinOne(DateTime.Today.AddDays(-2), DateTime.Today, "morten");
+            //As there is only five different states
+            Assert.IsFalse(result.Count() > 5);
+            int submittedCount = 0;
+            int cancelledCount = 0;
+            foreach (Entry ent in result)
+            {
+                if (ent.State.Equals("Submitted")) submittedCount = ent.Count;
+                if (ent.State.Equals("Cancelled")) cancelledCount = ent.Count;
+            }
+            DAO.AddEntry(DateTime.Today, "Submitted", "morten", 1);
+            var result2 = DAO.NrOfJobsWithin(DateTime.Today.AddDays(-2), DateTime.Today);
+            //As there is only five different states
+            Assert.IsFalse(result2.Count() > 5);
+            foreach (Entry ent in result2)
+            {
+                // assert that submitted count has increased by one
+                if (ent.State.Equals("Submitted")) Assert.IsTrue(ent.Count - submittedCount == 1);
+                // assert that cancelledCount hasn't changed
+                if (ent.State.Equals("Cancelled")) Assert.IsFalse(ent.Count - cancelledCount == 1);
+            }
         }
 
     }
