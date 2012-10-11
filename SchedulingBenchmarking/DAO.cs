@@ -42,6 +42,7 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
+                dbContext.Database.Connection.Open();
                 IEnumerable<string> users = (from db in dbContext.DbLogs select db.user).Distinct();
 
                 /*
@@ -59,6 +60,7 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
+                dbContext.Database.Connection.Open();
                 return from db in dbContext.DbLogs where db.user == name 
                        select new Job() { jobId = db.jobId };
                 
@@ -73,6 +75,7 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
+                dbContext.Database.Connection.Open();
                 DateTime span = DateTime.Today.AddDays(-x);
                 var lastTenDays = from db in dbContext.DbLogs
                                   where (db.timeStamp > span) && db.user == name
@@ -88,6 +91,7 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
+                dbContext.Database.Connection.Open();
                 IEnumerable<int> submits = from db in dbContext.DbLogs where 
                                   db.user == user && start < db.timeStamp && db.timeStamp < end 
                                   && db.jobState == "Submitted" select db.jobId;
@@ -103,6 +107,7 @@ namespace SchedulingBenchmarking
             
             using (var dbContext = new Model1Container())
             {
+                dbContext.Database.Connection.Open();
                 return from db in dbContext.DbLogs
                        where start < db.timeStamp && db.timeStamp < end
                        group db by db.jobState into JobByState
@@ -116,6 +121,7 @@ namespace SchedulingBenchmarking
         {
             using (var dbContext = new Model1Container())
             {
+                dbContext.Database.Connection.Open();
                 return from db in dbContext.DbLogs
                                   where start < db.timeStamp && db.timeStamp < end && user == db.user
                                   group db by db.jobState into JobByState

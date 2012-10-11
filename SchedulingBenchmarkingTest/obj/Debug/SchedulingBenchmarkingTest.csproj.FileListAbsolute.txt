@@ -34,3 +34,4 @@ C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBe
 C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarkingTest\obj\Debug\SchedulingBenchmarkingTest.csprojResolveAssemblyReference.cache
 C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarkingTest\obj\Debug\SchedulingBenchmarkingTest.dll
 C:\Users\Ellen\Documents\Visual Studio 2012\Projects\BDSA\AS40\AS40\SchedulingBenchmarkingTest\obj\Debug\SchedulingBenchmarkingTest.pdb
+C:\Users\Morten\Documents\Visual Studio 2012\Projects\BDSA2012\AS40\SchedulingBenchmarkingTest\bin\Debug\SchedulingBenchmarkingTest.dll.config
